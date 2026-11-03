@@ -4,5 +4,8 @@
     <Compile Update="MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="PolarGraphControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
   </ItemGroup>
 </Project>

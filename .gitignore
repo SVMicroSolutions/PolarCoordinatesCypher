@@ -6,3 +6,8 @@
 /.vs
 /PolarCoordinatesCypher/.vs
 /PolarCoordinatesCypher/PolarCoordinatesCypher/bin/x64/Release/net10.0-windows
+/PolarCoordinatesCypher/PolarCoordinatesCypher.Tests/bin
+/PolarCoordinatesCypher/PolarCoordinatesCypher.Tests/obj
+/PolarCoordinatesCypher/PolarCoordinatesCypher.Core/bin
+/PolarCoordinatesCypher/PolarCoordinatesCypher.Core/obj
+/PolarCoordinatesCypher/PolarCoordinatesCypher/bin/Debug/net10.0-windows
