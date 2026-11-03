@@ -69,6 +69,11 @@ namespace PolarCoordinatesCypher
             _polarGraphControl.ShowGrid = _chkShowGrid.Checked;
         }
 
+        private void ChkPolarisTheme_CheckedChanged(object? sender, EventArgs e)
+        {
+            _polarGraphControl.PolarisChartTheme = _chkPolarisTheme.Checked;
+        }
+
         private void BtnLoadBackground_Click(object? sender, EventArgs e)
         {
             using OpenFileDialog openDialog = new()
@@ -135,7 +140,8 @@ namespace PolarCoordinatesCypher
                     SelectedMode,
                     _chkConnectPoints.Checked,
                     _backgroundImagePath,
-                    _chkShowGrid.Checked);
+                    _chkShowGrid.Checked,
+                    _chkPolarisTheme.Checked);
                 MessageBox.Show(this, "Star map PDF exported successfully.", "Real-Star Polaris Cipher",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }

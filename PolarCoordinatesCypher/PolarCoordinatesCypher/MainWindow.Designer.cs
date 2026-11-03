@@ -54,6 +54,7 @@
             _flpExport = new FlowLayoutPanel();
             _chkConnectPoints = new CheckBox();
             _chkShowGrid = new CheckBox();
+            _chkPolarisTheme = new CheckBox();
             _btnClearBackground = new Button();
             _btnLoadBackground = new Button();
             _btnExportPdf = new Button();
@@ -247,6 +248,7 @@
             _flpExport.Controls.Add(_btnExportPdf);
             _flpExport.Controls.Add(_chkConnectPoints);
             _flpExport.Controls.Add(_chkShowGrid);
+            _flpExport.Controls.Add(_chkPolarisTheme);
             _flpExport.Controls.Add(_btnClearBackground);
             _flpExport.Controls.Add(_btnLoadBackground);
             _flpExport.Name = "_flpExport";
@@ -271,6 +273,15 @@
             _chkShowGrid.AccessibleName = "Show grid checkbox";
             _chkShowGrid.AccessibleDescription = "Shows or hides the polar axes and concentric grid circles.";
             _chkShowGrid.CheckedChanged += ChkShowGrid_CheckedChanged;
+
+            // _chkPolarisTheme
+            _chkPolarisTheme.AutoSize = true;
+            _chkPolarisTheme.Margin = new Padding(3, 10, 12, 3);
+            _chkPolarisTheme.Name = "_chkPolarisTheme";
+            _chkPolarisTheme.Text = "Polaris star-chart theme";
+            _chkPolarisTheme.AccessibleName = "Polaris star-chart theme checkbox";
+            _chkPolarisTheme.AccessibleDescription = "Applies a night-sky backdrop, gold stars, silver constellation lines, a Polaris marker, and a compass rose.";
+            _chkPolarisTheme.CheckedChanged += ChkPolarisTheme_CheckedChanged;
 
             // _btnClearBackground
             _btnClearBackground.AutoSize = true;
@@ -349,6 +360,7 @@
         private FlowLayoutPanel _flpExport;
         private CheckBox _chkConnectPoints;
         private CheckBox _chkShowGrid;
+        private CheckBox _chkPolarisTheme;
         private Button _btnClearBackground;
         private Button _btnLoadBackground;
         private Button _btnExportPdf;

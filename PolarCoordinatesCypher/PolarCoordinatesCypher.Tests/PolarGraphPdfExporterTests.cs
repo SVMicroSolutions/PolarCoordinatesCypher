@@ -1,4 +1,5 @@
 using System.Runtime.Versioning;
+using PdfSharp.Pdf.IO;
 using PolarCoordinatesCypher.Core;
 
 namespace PolarCoordinatesCypher.Tests;
@@ -32,6 +33,28 @@ public class PolarGraphPdfExporterTests
     }
 
     [TestMethod]
+    public void Export_CreatesTwoPages_WithSecondPageBeingDecoderStarMap()
+    {
+        string filePath = Path.Combine(Path.GetTempPath(), $"{Guid.NewGuid()}.pdf");
+
+        try
+        {
+            PolarGraphPdfExporter.Export("STARS", filePath, CipherMode.Numeric);
+
+            using PdfSharp.Pdf.PdfDocument document = PdfReader.Open(filePath, PdfDocumentOpenMode.ReadOnly);
+
+            Assert.HasCount(2, document.Pages);
+        }
+        finally
+        {
+            if (File.Exists(filePath))
+            {
+                File.Delete(filePath);
+            }
+        }
+    }
+
+    [TestMethod]
     public void Export_WithConnectPointsDisabled_StillCreatesFile()
     {
         string filePath = Path.Combine(Path.GetTempPath(), $"{Guid.NewGuid()}.pdf");
@@ -41,6 +64,28 @@ public class PolarGraphPdfExporterTests
             PolarGraphPdfExporter.Export("VEGA", filePath, CipherMode.Constellation, connectPoints: false);
 
             Assert.IsTrue(File.Exists(filePath));
+        }
+        finally
+        {
+            if (File.Exists(filePath))
+            {
+                File.Delete(filePath);
+            }
+        }
+    }
+
+    [TestMethod]
+    public void Export_WithPolarisChartTheme_StillCreatesNonEmptyPdfFile()
+    {
+        string filePath = Path.Combine(Path.GetTempPath(), $"{Guid.NewGuid()}.pdf");
+
+        try
+        {
+            PolarGraphPdfExporter.Export("POLARIS", filePath, CipherMode.Numeric, polarisChartTheme: true);
+
+            Assert.IsTrue(File.Exists(filePath));
+            FileInfo info = new(filePath);
+            Assert.IsGreaterThan(0, info.Length);
         }
         finally
         {
